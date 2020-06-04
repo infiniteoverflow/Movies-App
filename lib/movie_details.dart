@@ -117,6 +117,100 @@ class MovieDetailsPage extends StatelessWidget {
                 ),
               )
             ],
+          ),
+
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+              ),
+              borderRadius: BorderRadius.circular(10)
+            ),
+            margin: EdgeInsets.all(5),
+            child: Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Director(s):",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Colors.deepOrangeAccent
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: Text(
+                      "${movie.directors}",
+                      style: TextStyle(
+                        fontSize: 25.0
+                      ),
+                    ),
+                  ),
+
+                  Text(
+                    "Actors:",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Colors.deepOrangeAccent
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: Text(
+                      "${movie.actors}",
+                      style: TextStyle(
+                        fontSize: 25.0
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          SizedBox(
+            height: 10,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              "More Images :",
+              style: TextStyle(
+                fontSize:20.0,
+                fontWeight:FontWeight.bold 
+              ),
+            ),
+          ),
+
+          Container(
+            height: 100,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context,int index) {
+                return Card(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10), 
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(image: NetworkImage(movie.images[index]),fit: BoxFit.cover)
+                      ),
+                    ),
+                  ),
+                );
+              },
+              itemCount: movie.images.length,
+              separatorBuilder: (BuildContext context,int index) {
+                return SizedBox(width:5);
+              },
+            ),
           )
         ],
       )
