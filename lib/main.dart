@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 InkWell(
                   child: MovieList(movies[index], index),
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> MovieDetailsPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=> MovieDetailsPage(movie: movies[index],)));
                   },
                 ),
                 MovieListAvatar(movies[index],index)
